@@ -1,6 +1,6 @@
 {
-  "name": "node-saml-x",
-  "version": "3.2.2",
+  "name": "node-saml",
+  "version": "3.3.0",
   "license": "MIT",
   "keywords": [
     "saml",
@@ -20,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zoellner/node-saml.git"
+    "url": "git+https://github.com/nestr-dev/node-saml.git"
   },
   "main": "./src/index.js",
   "dependencies": {
@@ -49,9 +49,9 @@
     "lint:fix": "npx eslint --fix ."
   },
   "bugs": {
-    "url": "https://github.com/zoellner/node-saml/issues"
+    "url": "https://github.com/nestr-dev/node-saml/issues"
   },
-  "homepage": "https://github.com/zoellner/node-saml#readme",
+  "homepage": "https://github.com/nestr-dev/node-saml#readme",
   "directories": {
     "doc": "docs",
     "test": "test"

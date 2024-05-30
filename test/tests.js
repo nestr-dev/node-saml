@@ -22,7 +22,7 @@ describe( 'node-saml /', function() {
     it( '_generateUniqueID should generate 20 char IDs', function() {
       var samlObj = new SAML( { entryPoint: 'foo' } );
       for(var i = 0; i < 200; i++){
-        samlObj._generateUniqueID().length.should.eql(20);
+        samlObj.generateUniqueID().length.should.eql(20);
       }
     });
 
@@ -586,7 +586,7 @@ describe( 'node-saml /', function() {
           }
         };
         var samlObj = new SAML( samlConfig );
-        samlObj._generateUniqueID = function () { return '12345678901234567890'; };
+        samlObj.generateUniqueID = function () { return '12345678901234567890'; };
         const url = await samlObj.getAuthorizeUrl({}, {});
 
         var searchParams = new URL(url).searchParams;
@@ -608,7 +608,7 @@ describe( 'node-saml /', function() {
           }
         };
         var samlObj = new SAML( samlConfig );
-        samlObj._generateUniqueID = function () { return '12345678901234567890'; };
+        samlObj.generateUniqueID = function () { return '12345678901234567890'; };
 
         var request = '<?xml version=\\"1.0\\"?><samlp:AuthnRequest xmlns:samlp=\\"urn:oasis:names:tc:SAML:2.0:protocol\\" ID=\\"_ea40a8ab177df048d645\\" Version=\\"2.0\\" IssueInstant=\\"2017-08-22T19:30:01.363Z\\" ProtocolBinding=\\"urn:oasis:names$tc:SAML:2.0:bindings:HTTP-POST\\" AssertionConsumerServiceURL=\\"https://example.com/login/callback\\" Destination=\\"https://www.example.com\\"><saml:Issuer xmlns:saml=\\"urn:oasis:names:tc:SAML:2.0:assertion\\">onelogin_saml</saml:Issuer><s$mlp:NameIDPolicy xmlns:samlp=\\"urn:oasis:names:tc:SAML:2.0:protocol\\" Format=\\"urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress\\" AllowCreate=\\"true\\"/><samlp:RequestedAuthnContext xmlns:samlp=\\"urn:oasis:names:tc:SAML:2.0:protoc$l\\" Comparison=\\"exact\\"><saml:AuthnContextClassRef xmlns:saml=\\"urn:oasis:names:tc:SAML:2.0:assertion\\">urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</saml:AuthnContextClassRef></samlp:RequestedAuthnContext></samlp$AuthnRequest>';
         await samlObj._requestToUrl(request, null, 'authorize', {}).should.be.rejectedWith({message: '"entryPoint" config parameter is required for signed messages'});
@@ -628,7 +628,7 @@ describe( 'node-saml /', function() {
           }
         };
         var samlObj = new SAML( samlConfig );
-        samlObj._generateUniqueID = function () { return '12345678901234567890'; };
+        samlObj.generateUniqueID = function () { return '12345678901234567890'; };
         const url = await samlObj.getAuthorizeUrl({}, {});
 
         var searchParams = new URL(url).searchParams;
