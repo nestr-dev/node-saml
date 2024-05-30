@@ -1,5 +1,5 @@
 const {SignedXml} = require('xml-crypto');
-const xmldom = require('xmldom');
+const { DOMParser } = require('@xmldom/xmldom');
 const xpath = require('xpath');
 
 class XMLParser {
@@ -18,7 +18,7 @@ class XMLParser {
       ...additionalNamespaces
     };
 
-    this.parsedXml = new xmldom.DOMParser({}).parseFromString(xml);
+    this.parsedXml = new DOMParser({}).parseFromString(xml);
 
     this.signatureVerified = Boolean(signaturePublicKeys) && this.verifySignature(signaturePublicKeys);
   }
