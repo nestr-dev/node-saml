@@ -41,7 +41,7 @@ class XMLParser {
 
   // This function checks that the |signature| is signed with a given |signaturePublicKey|.
   _verifySignatureForKey(signaturePublicKey, currentNodeQuery = '/*') {
-    const signatures = this.query('//sig:Signature');
+    const signatures = this.query(currentNodeQuery+'//sig:Signature');
     // This function is expecting to validate exactly one signature, so if we find more or fewer than that, reject.
     if (signatures.length !== 1) {
       return false;
